@@ -30,7 +30,7 @@ const DraggableList = ({ list, draggable = true }: DraggableListProps) => {
 
   useEffect(() => {
     setCurrentUser(auth.currentUser)
-  }, [auth.currentUser])
+  }, [])
 
   useEffect(() => {
     setItems(list)
@@ -47,7 +47,7 @@ const DraggableList = ({ list, draggable = true }: DraggableListProps) => {
     return { day, date }
   }
 
-  const handleDragStart = (e: DragEvent<HTMLDivElement>, index: number) => {
+  const handleDragStart = (e: DragEvent<HTMLDivElement>) => {
     const { target } = e
     dragNode.current = target as HTMLElement
     e.dataTransfer.effectAllowed = 'move'

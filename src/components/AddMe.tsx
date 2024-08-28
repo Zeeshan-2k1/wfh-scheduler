@@ -31,7 +31,7 @@ const AddMe = ({ team, toggleSidebar }: Props) => {
 
   useEffect(() => {
     setCurrentUser(auth.currentUser)
-  }, [auth.currentUser])
+  }, [])
 
   const addUser = async () => {
     const name = prompt('Please enter your name')

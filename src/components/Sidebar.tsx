@@ -6,7 +6,7 @@ import { ACTIVITY_COLLECTION_NAME } from '../utils/constants'
 
 type Props = {
   isOpen: boolean
-  setIsOpen: (e: boolean) => void
+  setIsOpen: (_open: boolean) => void
 }
 
 const Sidebar = ({ isOpen, setIsOpen }: Props) => {
@@ -62,9 +62,12 @@ const Sidebar = ({ isOpen, setIsOpen }: Props) => {
       </div>
 
       <div className="flex w-full flex-col items-start justify-start space-y-4">
-        {activityList.map((activity: IActivity) => {
+        {activityList.map((activity: IActivity, index) => {
           return (
-            <div className="w-full border-y border-slate-200 p-2">
+            <div
+              key={activity?.time ?? index}
+              className="w-full border-y border-slate-200 p-2"
+            >
               <p>
                 <span className="text-lg font-bold">{activity.who}</span>{' '}
                 changed with{' '}

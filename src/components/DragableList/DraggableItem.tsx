@@ -5,9 +5,9 @@ import Tooltip from '../Tooltip'
 type Props = {
   item: string | WeekDayWithDate
   draggable: boolean
-  handleDragStart: (e: any, index: number) => void
-  handleDragOver: (e: any, index: number) => void
-  handleDragEnd: (e: any, index: number) => void
+  handleDragStart: (_e: any, _index: number) => void
+  handleDragOver: (_e: any, _index: number) => void
+  handleDragEnd: (_e: any, _index: number) => void
   index: number
 }
 
