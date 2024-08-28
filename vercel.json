@@ -1,10 +1,12 @@
 {
-  "functions": {
-    "api/reshuffle": {
+  "crons": [
+    {
+      "path": "/api/reshuffle",
       "schedule": "0 22 * * 5"
     },
-    "api/clearlogs": {
+    {
+      "path": "/api/clearlogs",
       "schedule": "0 22 * * 5"
     }
-  }
+  ]
 }
