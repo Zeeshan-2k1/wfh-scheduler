@@ -18,15 +18,14 @@ import {
   USER_COLLECTION_NAME,
 } from '@/utils/constants'
 import { FirebaseError } from 'firebase/app'
-import { setDoc, doc } from 'firebase/firestore'
+import { setDoc, doc, getDoc } from 'firebase/firestore'
 import db from '@/utils/firestore'
 
 type Props = {
-  team: string[]
   toggleSidebar: () => void
 }
 
-const AddMe = ({ team, toggleSidebar }: Props) => {
+const AddMe = ({ toggleSidebar }: Props) => {
   const [currentUser, setCurrentUser] = useState<User | null>()
 
   useEffect(() => {
@@ -66,6 +65,16 @@ const AddMe = ({ team, toggleSidebar }: Props) => {
       successNotification(`User: ${name} is added successfully`)
 
       await sendEmailVerification(user)
+
+      let team: any[] = []
+      const docRef = doc(db, SCHEDULE_COLLECTION_NAME, SCHEDULE_DOC_NAME)
+      const docSnap = await getDoc(docRef)
+      if (docSnap.exists()) {
+        const data = docSnap.data()?.[DATA_FIELD]
+        if (Array.isArray(data)) {
+          team = [...data]
+        }
+      }
 
       await setDoc(doc(db, SCHEDULE_COLLECTION_NAME, SCHEDULE_DOC_NAME), {
         [DATA_FIELD]: [...team, name],

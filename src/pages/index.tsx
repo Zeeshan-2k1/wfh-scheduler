@@ -60,7 +60,7 @@ export default function Home() {
           <DraggableList list={weekDays} draggable={false} />
           <DraggableList list={team} />
         </section>
-        <AddMe toggleSidebar={() => setIsOpen(!isOpen)} team={team} />
+        <AddMe toggleSidebar={() => setIsOpen(!isOpen)} />
         <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
       </main>
       <ToastContainer />
