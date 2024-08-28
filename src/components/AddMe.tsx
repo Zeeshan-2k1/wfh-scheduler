@@ -65,11 +65,11 @@ const AddMe = ({ team, toggleSidebar }: Props) => {
 
       successNotification(`User: ${name} is added successfully`)
 
+      await sendEmailVerification(user)
+
       await setDoc(doc(db, SCHEDULE_COLLECTION_NAME, SCHEDULE_DOC_NAME), {
         [DATA_FIELD]: [...team, name],
       })
-
-      await sendEmailVerification(user)
     } catch (error) {
       if (error instanceof FirebaseError) {
         if (error.message === 'Firebase: Error (auth/email-already-in-use).') {

@@ -27,7 +27,9 @@ export default function Home() {
       const docSnap = await getDoc(docRef)
       if (docSnap.exists()) {
         const data = docSnap.data()?.[DATA_FIELD]
-        setTeam(data as string[])
+        if (Array.isArray(data)) {
+          setTeam(data as string[])
+        }
       }
     }
 

@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "api/reshuffle": {
+      "schedule": "0 22 * * 5"
+    },
+    "api/clearlogs": {
+      "schedule": "0 22 * * 5"
+    }
+  }
+}
