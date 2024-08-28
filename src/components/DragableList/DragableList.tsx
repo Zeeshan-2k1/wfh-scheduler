@@ -30,7 +30,7 @@ const DraggableList = ({ list, draggable = true }: DraggableListProps) => {
 
   useEffect(() => {
     setCurrentUser(auth.currentUser)
-  }, [])
+  }, [auth.currentUser])
 
   useEffect(() => {
     setItems(list)

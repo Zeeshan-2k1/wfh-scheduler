@@ -30,7 +30,7 @@ const AddMe = ({ toggleSidebar }: Props) => {
 
   useEffect(() => {
     setCurrentUser(auth.currentUser)
-  }, [])
+  }, [auth.currentUser])
 
   const addUser = async () => {
     const name = prompt('Please enter your name')
@@ -100,6 +100,7 @@ const AddMe = ({ toggleSidebar }: Props) => {
   const verifyUser = async () => {
     if (currentUser && !currentUser.emailVerified) {
       sendEmailVerification(currentUser)
+      successNotification('Please check your mail.')
     }
   }
 
